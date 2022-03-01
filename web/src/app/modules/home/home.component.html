@@ -1,0 +1,18 @@
+﻿<div class="p-4">
+    <div class="container">
+        <h1>Hi {{user.username}}!</h1>
+        <p>Your current seat number is {{currentSeatNumber}}</p>
+        <p>You're logged in dApp</p>
+    </div>
+
+    <div class="col-sm-7">
+        <h4>Seat Chart</h4>
+        <ng-container *ngIf="seats">
+            <div class="coach_row">
+                <ng-container *ngFor="let seat of seats">
+                    <div class="circle seat" [ngClass]="seat.styleClass(currentSeatNumber)" (click)="click(seat)">
+                        {{seat.seatNumber}}</div>
+                </ng-container>
+            </div>
+        </ng-container>
+    </div>

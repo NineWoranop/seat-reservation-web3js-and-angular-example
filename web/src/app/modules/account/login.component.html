@@ -1,0 +1,46 @@
+﻿<div class="card">
+    <h4 class="card-header">Login</h4>
+    <div class="card-body">
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+            <div class="form-group">
+                <label for="environment">Environment</label>
+                <select formControlName="environment" class="form-control">
+                    <option disabled>Select Environment</option>
+                    <option *ngFor="let env of environmentList">{{env}}</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="contractAddress">Smart Contract Address</label>
+                <input type="text" formControlName="contractAddress" class="form-control" [ngClass]="{ 'is-invalid': submitted && f !== null && f['contractAddress'] !== null && f['contractAddress'].errors }" />
+                <div *ngIf="submitted && f !== null && f['contractAddress'] !== null && f['contractAddress'].errors" class="invalid-feedback">
+                    <div *ngIf="f !== null && f['contractAddress'] !== null && f['contractAddress'].errors['required']">Sender Wallet is required</div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="senderWalletAddress">Sender Wallet Address</label>
+                <input type="text" formControlName="senderWalletAddress" class="form-control" [ngClass]="{ 'is-invalid': submitted && f !== null && f['senderWalletAddress'] !== null && f['senderWalletAddress'].errors }" />
+                <div *ngIf="submitted && f !== null && f['senderWalletAddress'] !== null && f['senderWalletAddress'].errors" class="invalid-feedback">
+                    <div *ngIf="f !== null && f['senderWalletAddress'] !== null && f['senderWalletAddress'].errors['required']">Sender Wallet is required</div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f !== null && f['username'] !== null && f['username'].errors }" />
+                <div *ngIf="submitted && f !== null && f['username'] !== null && f['username'].errors" class="invalid-feedback">
+                    <div *ngIf="f !== null && f['username'] !== null && f['username'].errors['required']">Username is required</div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <button [disabled]="loading" class="btn btn-primary">
+                    <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                    Login
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

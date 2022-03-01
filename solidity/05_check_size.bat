@@ -1,0 +1,1 @@
+npm install & truffle run contract-size

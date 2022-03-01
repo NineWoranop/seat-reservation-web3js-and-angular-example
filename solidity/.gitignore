@@ -1,0 +1,4 @@
+bin
+build
+jest-test
+node_modules
